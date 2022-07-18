@@ -56,6 +56,7 @@ def generate_launch_description():
         output="screen",
         parameters=[{'use_sim_time': True}, robot_description],
     )
+   
 
     spawn_joint_state_broadcaster = Node(
         package='controller_manager',
@@ -86,6 +87,7 @@ def generate_launch_description():
         output='screen',
         # condition=IfCondition(LaunchConfiguration('gui')),
     )
+
 
     # Spawn robot
     spawn_robot = Node(

@@ -108,6 +108,32 @@
     </joint>
 
 
+  <link name="/radar_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.1 0.1"/>
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.1 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="radar_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="/radar_link"/>
+        <origin xyz=" ${-0.48 - husky_rear_bumper_extend} 0 0.091" rpy="0 0 0" />
+    </joint>
+
+    
+
     <!-- Husky wheel macros -->
     <xacro:husky_wheel wheel_prefix="${prefix}front_left">
       <origin xyz="${wheelbase/2} ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
@@ -175,7 +201,7 @@
           <param name="max_accel">5.0</param>
           <param name="max_speed">1.0</param>
           <param name="polling_timeout">10.0</param>
-          <param name="serial_port">/dev/prolific</param>
+          <param name="serial_port">/dev/ttyUSB0</param>
         </xacro:unless>
       </hardware>
       <joint name="${prefix}front_left_wheel_joint">

@@ -11,7 +11,7 @@ def generate_launch_description():
     config_husky_ekf = PathJoinSubstitution(
         [FindPackageShare('husky_control'),
         'config',
-        'localization.yaml'],
+        'ekf.yaml'],
     )
 
     node_ekf = Node(
